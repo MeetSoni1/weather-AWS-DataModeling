@@ -119,3 +119,7 @@ resource "aws_ssm_parameter" "tf_local_parameter_store" {
   type        = "SecureString"
   value       = var.openWeatherAPI
 }
+
+# add RDS
+
+# add quicksight
