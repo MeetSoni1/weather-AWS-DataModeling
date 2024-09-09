@@ -62,13 +62,6 @@ async def dataRequest(city):
         return {}
 
 async def dataCollection():
-    logging.info('Start collecting data.')
-
-    t_start = datetime.now()
     tasks = [dataRequest(city) for city in cities]
     results = await asyncio.gather(*tasks)
-    t_end = datetime.now() - t_start
-
-    logging.info('Data collection completed.')    
-    logging.info(f"Total time taken to retrive API data: {t_end}")
     return results

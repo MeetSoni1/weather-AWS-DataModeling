@@ -12,7 +12,14 @@ from write_database import create_engine, writeDatabase
 
 def lambda_handler():
     # Data Collection
+    logging.info('Start collecting data.')
+    t_start = datetime.now()
+
     weatherData = asyncio.run(dataCollection())
+    
+    t_end = datetime.now() - t_start
+    logging.info('Data collection completed.')    
+    logging.info(f"Total time taken to retrive API data: {t_end}")
     
     # Data Cleaning
     processed_weatherData = []
@@ -26,7 +33,7 @@ def lambda_handler():
     logging.info('Data cleaning completed.')    
     logging.info(f"Total time taken to clean data: {t_end}")    
 
-    # Write in Database
+    # Write to Database
     logging.info('Start writing to Database.')
     t_start = datetime.now()
 
