@@ -1,0 +1,12 @@
+# venv files
+weather_venv/*
+
+#Infrastructure terraform files
+infrastructure/.terraform/*
+infrastructure/.terraform.lock.hcl
+infrastructure/tf.tfvars
+infrastructure/terraform.tfstate
+infrastructure/terraform.tfstate.backup
+
+# secrets
+secrets/*
