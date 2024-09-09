@@ -1,5 +1,5 @@
 CREATE TABLE city_coordinates(
-    city_name VARCHAR(100) PRIMARY KEY,
+    capital_city VARCHAR(100) PRIMARY KEY,
     country VARCHAR(100),
     latitude FLOAT CHECK (latitude BETWEEN -90 AND 90),
     longitude FLOAT CHECK (longitude BETWEEN -180 AND 180)
