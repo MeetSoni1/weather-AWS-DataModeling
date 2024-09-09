@@ -99,16 +99,9 @@ resource "aws_iam_role_policy" "lambda_basic_execution" {
   })
 }
 
-# Attach the policy to the Lambda role
-# resource "aws_iam_role_policy_attachment" "lambda_rds_attachment" {
-#   role       = aws_iam_role.iam_for_lambda.name
-#   policy_arn = aws_iam_role_policy.lambda_basic_execution.arn
-# }
-
 # Lambda Basic Excecution
 resource "aws_lambda_function" "tf_local_lambda" {
-  # Include a path.module in the filename if the file is not in the current working directory.
-  filename      = "Y:/projects/weather/lambda_func/weatherLambdaFunc.zip"
+  filename      = "/weatherLambdaFunc.zip"
   function_name = "weather-lambda"
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "lambda_function.lambda_handler"
@@ -147,7 +140,7 @@ resource "aws_db_instance" "mytrialdb" {
   allocated_storage               = 20
   storage_type                    = "gp2"
   backup_retention_period         = 1
-  db_name                         = "weatherdb"
+  db_name                         = "***"
   engine                          = "mysql"
   engine_version                  = "8.0.39"
   instance_class                  = "db.t3.micro"
@@ -173,7 +166,7 @@ resource "aws_security_group" "rds_sg" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # limit access to specific IP ranges or services
+    cidr_blocks = ["0.0.0.0/0"] # limited access to specific IP ranges while provisioning
   }
 
   egress {
@@ -186,23 +179,23 @@ resource "aws_security_group" "rds_sg" {
 
 # Quicksight Permissions
 
-# resource "aws_quicksight_data_source" "rds_mysql" {
-#   data_source_id = "rds-mysql-weatherdatasource"
-#   name           = "RDS Weather Data Source"
-#   type           = "RDS"
+resource "aws_quicksight_data_source" "rds_mysql" {
+  data_source_id = "rds-mysql-weatherdatasource"
+  name           = "RDS Weather Data Source"
+  type           = "RDS"
 
-#   data_source_parameters {
-#     rds_instance_id = aws_db_instance.mytrialdb.id
-#     database        = "mytrialdb"
-#   }
+  data_source_parameters {
+    rds_instance_id = aws_db_instance.mytrialdb.id
+    database        = "***"
+  }
 
-#   credentials {
-#     username = "***"
-#     password = "***"
-#   }
+  credentials {
+    username = "***"
+    password = "***"
+  }
 
-#   permissions {
-#     principal = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/service-role/aws-quicksight-service-role-v0" # QuickSight Role ARN
-#     actions   = ["quicksight:DescribeDataSource"]
-#   }
-# }
+  permissions {
+    principal = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/service-role/aws-quicksight-service-role-v0" # QuickSight Role ARN
+    actions   = ["quicksight:DescribeDataSource"]
+  }
+}
