@@ -1,6 +1,3 @@
-import requests as rq
-from datetime import datetime
-import time
 import pandas as pd
 import sqlalchemy
 

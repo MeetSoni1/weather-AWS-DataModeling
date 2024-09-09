@@ -5,7 +5,6 @@ import boto3
 import sqlalchemy
 import aiohttp
 import requests
-import pandas as pd
 import logging
 
 from write_database import create_engine
