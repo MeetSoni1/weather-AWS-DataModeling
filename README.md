@@ -1,10 +1,13 @@
-**Description:** Weather & Energy.
+**Description:** Relational Data Modeling and Analysis of Real-time Weather data implemented on AWS Architecture.
 
+<h1><center>Relational Data Modeling<center></h1>
+
+![Relational Data Model](database/relational_modeling.png)
 ---
 
 <h1><center>AWS Architecture<center></h1>
 
-![AWS Architecture](architecture/weather_energy.png)
+![AWS Architecture](architecture/weather.gif)
 
 ---
 
@@ -24,3 +27,5 @@ ___
 * **Quicksight:** Data visualization
 * **CloudWatch:** Logging and monitoring
 * **IAM:** Managing roles and policies
+
+---
