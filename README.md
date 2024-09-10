@@ -27,5 +27,3 @@ ___
 * **Quicksight:** Data visualization
 * **CloudWatch:** Logging and monitoring
 * **IAM:** Managing roles and policies
-
----
