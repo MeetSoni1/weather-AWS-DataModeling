@@ -8,6 +8,7 @@ CREATE TABLE city_coordinates(
 CREATE TABLE weather_main(
     record_time DATETIME,
     city_name VARCHAR(100),
+    general VARCHAR(100),
     PRIMARY KEY (record_time, city_name)
 );
 
@@ -37,6 +38,7 @@ CREATE TABLE wind_clouds_visibility_data (
     visibility FLOAT,
     wind_speed FLOAT,
     wind_deg FLOAT,
+    wind_gust FLOAT,
     clouds FLOAT,
     PRIMARY KEY (record_time, city_name)
 );
@@ -49,16 +51,15 @@ CREATE TABLE precipitation_data (
     PRIMARY KEY (record_time, city_name)
 );
 
-CREATE TABLE area(
+CREATE TABLE region(
     city_name VARCHAR(100) PRIMARY KEY NOT Null,
     country_code VARCHAR(5),
     timezone INT
 );
 
-CREATE TABLE general_weather(
+CREATE TABLE day_length(
     record_time DATETIME,
     city_name VARCHAR(100),
-    general VARCHAR(100),
     sunrise INT,
     sunset INT,
     PRIMARY KEY (record_time, city_name)
