@@ -11,9 +11,11 @@ def dataPrep(data):
     city_name = data['name'].lower()   #-> str
 
     # 'weather_main' Table
-    weather_main_dict = {'record_time': record_time, 'city_name':city_name}
-    weather_main_df = create_df(weather_main_dict)
+    overall = data['weather'][0]['main']   #-> str
 
+    weather_main_dict = {'record_time': record_time, 'city_name':city_name, 'overall':overall}
+    weather_main_df = create_df(weather_main_dict)
+    
     # 'temperature_data' Table
     temp = data['main']['temp']   # -> float
     feels_like = data['main']['feels_like']   # -> float
@@ -59,7 +61,7 @@ def dataPrep(data):
     precipitation_dict = {'record_time': record_time, 'city_name':city_name, 'rain':rain, 'snow':snow}
     precipitation_df = create_df(precipitation_dict)
 
-    # 'area' Table
+    # 'region' Table
     city_name = data['name']   #-> str
     country_code = data['sys']['country']   #-> str
     timezone = data['timezone']   #-> str
@@ -67,12 +69,12 @@ def dataPrep(data):
     area_dict = {'city_name': city_name, 'country_code':country_code, 'timezone':timezone}
     area_df = create_df(area_dict)
 
-    # 'general_weather' Table
-    general = data['weather'][0]['main']   #-> str
+    # 'day_length' Table
+    
     sunrise = data['sys']['sunrise']   #-> str
     sunset = data['sys']['sunset']   #-> str
 
-    general_weather_dict = {'record_time': record_time, 'city_name': city_name,'general':general, 'sunrise':sunrise, 'sunset':sunset}
+    general_weather_dict = {'record_time': record_time, 'city_name': city_name, 'sunrise':sunrise, 'sunset':sunset}
     general_weather_df = create_df(general_weather_dict)
 
     #Data validated - checked the types of the data that should matche the column data types in the database

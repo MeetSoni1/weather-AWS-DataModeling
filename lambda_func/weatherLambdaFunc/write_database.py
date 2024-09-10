@@ -19,8 +19,8 @@ def writeDatabase(city_data, engine):
         city_data[2].to_sql(name = 'pressure_humidity_data', con = engine.connect().connection, index=False, if_exists='append')   # -> 'pressure_humidity_data' Table
         city_data[3].to_sql(name = 'wind_clouds_visibility_data', con = engine.connect().connection, index=False, if_exists='append')   # -> 'wind_clouds_visibility_data' Table
         city_data[4].to_sql(name = 'precipitation_data', con = engine.connect().connection, index=False, if_exists='append')   # -> 'precipitation_data' Table
-        city_data[5].to_sql(name = 'area', con = engine.connect().connection, index=False, if_exists='append')   # -> 'area' Table
-        city_data[6].to_sql(name = 'general_weather', con = engine.connect().connection, index=False, if_exists='append')   # -> 'general_weather' Table
+        city_data[5].to_sql(name = 'region', con = engine.connect().connection, index=False, if_exists='append')   # -> 'region' Table
+        city_data[6].to_sql(name = 'day_length', con = engine.connect().connection, index=False, if_exists='append')   # -> 'day__length' Table
 
     except Exception as e:
         print(e)
